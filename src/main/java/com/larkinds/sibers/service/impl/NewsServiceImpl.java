@@ -38,6 +38,6 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<NewsDto> getAllWithPagination(Integer limit) {
-        return mapper.toDtoList(repository.findAllWithPagination(PageRequest.of(0,limit)).toList());
+        return mapper.toDtoList(repository.findAll(PageRequest.of(0,limit)).toList());
     }
 }
