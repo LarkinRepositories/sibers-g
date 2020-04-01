@@ -19,11 +19,11 @@ public interface NewsService {
     List<NewsDto> getAll();
 
     /**
-     * Updates the news by its id
-     * @param id id of the news
+     * Updates a particular news in the database
+     * @param newsDto news to update
      * @return updated news dto
      */
-    NewsDto update(Long id);
+    NewsDto update(NewsDto newsDto);
 
     /**
      * Returns a limited count of news
