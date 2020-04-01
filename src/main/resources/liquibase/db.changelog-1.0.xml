@@ -12,7 +12,7 @@
             <column name="img" type="VARCHAR(255)">
                 <constraints nullable="true" unique="false" />
             </column>
-            <column name="message" type="VARCHAR(2048)">
+            <column name="text" type="VARCHAR(2048)">
                 <constraints nullable="false" unique="false" />
             </column>
         </createTable>

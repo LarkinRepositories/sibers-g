@@ -13,5 +13,5 @@ public class NewsDto {
     private final Long id;
     private final LocalDateTime created;
     private String img;
-    private final String  message;
+    private final String  text;
 }

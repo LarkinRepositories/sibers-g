@@ -18,6 +18,6 @@ public class News {
     private LocalDateTime created;
     @Column(name = "img")
     private String img;
-    @Column(name = "message")
-    private String  message;
+    @Column(name = "text")
+    private String text;
 }
