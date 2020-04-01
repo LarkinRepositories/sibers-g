@@ -1,7 +1,6 @@
 package com.larkinds.sibers.dto;
 
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 @Data
