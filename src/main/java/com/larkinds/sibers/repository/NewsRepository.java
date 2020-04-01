@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface NewsRepository extends JpaRepository<News, Long> {
     /**
@@ -14,4 +16,12 @@ public interface NewsRepository extends JpaRepository<News, Long> {
      * @return page of news
      */
     Page<News> findAll(Pageable pageable);
+
+    /**
+     * Returns news containing specific text
+     * @param searchText text to search
+     * @param  titleText title text to search
+     * @return List of news containing specific text
+     */
+    List<News> findAllByTextContainingOrTitleContaining(String searchText, String titleText);
 }
