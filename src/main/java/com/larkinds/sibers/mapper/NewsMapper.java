@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * Mapper resolving reversible mapping from News class and NewsDto class instances
+ * Mapper resolving reversible mapping between News class and NewsDto class instances
  */
 @Component
 public class NewsMapper {
