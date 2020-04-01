@@ -5,7 +5,9 @@ import com.larkinds.sibers.mapper.NewsMapper;
 import com.larkinds.sibers.repository.NewsRepository;
 import com.larkinds.sibers.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,17 +34,17 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public Page<NewsDto> getPage(Pageable pageable) {
+        return repository.findAll(pageable).map(e->mapper.toDto(e));
+    }
+
+    @Override
     public NewsDto update(NewsDto newsDto) {
         return mapper.toDto(repository.save(mapper.toEntity(newsDto)));
     }
 
     @Override
-    public List<NewsDto> getAllWithPagination(Integer limit) {
-        return mapper.toDtoList(repository.findAll(PageRequest.of(0,limit)).toList());
-    }
-
-    @Override
-    public List<NewsDto> filter(String filterText) {
-        return mapper.toDtoList(repository.findAllByTextContainingOrTitleContaining(filterText, filterText));
+    public Page<NewsDto> filter(String filterText, Pageable pageable) {
+        return repository.findAllByTextContainingOrTitleContaining(filterText, filterText, pageable).map(e->mapper.toDto(e));
     }
 }

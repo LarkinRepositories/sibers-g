@@ -1,6 +1,8 @@
 package com.larkinds.sibers.service;
 
 import com.larkinds.sibers.dto.NewsDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -19,6 +21,13 @@ public interface NewsService {
     List<NewsDto> getAll();
 
     /**
+     * Returns list of news limited to pageable
+     * @param pageable limiter
+     * @return a list of news
+     */
+    Page<NewsDto> getPage(Pageable pageable);
+
+    /**
      * Updates a particular news in the database
      * @param newsDto news to update
      * @return updated news dto
@@ -26,17 +35,11 @@ public interface NewsService {
     NewsDto update(NewsDto newsDto);
 
     /**
-     * Returns a limited count of news
-     * @param limit limiter
-     * @return a list of news matching param criteria
-     */
-    List<NewsDto> getAllWithPagination(Integer limit);
-
-    /**
      * Filters news to display only containing filterText ones
      * @param filterText a text to filter the news
+     * @param pageable limiter
      * @return List of filtered news matching param criteria
      */
-    List<NewsDto> filter(String filterText);
+    Page<NewsDto> filter(String filterText, Pageable pageable);
 
 }
