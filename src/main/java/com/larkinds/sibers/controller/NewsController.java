@@ -5,12 +5,17 @@ import com.larkinds.sibers.service.NewsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -28,16 +33,18 @@ public class NewsController {
     @Value("${upload.path}")
     private String uploadPath;
     @GetMapping
-    public String index(@RequestParam(name ="filterText", required = false, defaultValue = "") String filterText,
-                        Model model) {
-        List<NewsDto> news = new ArrayList<>();
+    public String index(@RequestParam(name ="filterText", required = false, defaultValue = "") String filterText, Model model,
+                        @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<NewsDto> news;
         if (filterText != null && !filterText.isEmpty()) {
-            news = newsService.filter(filterText);
+            news = newsService.filter(filterText,pageable);
         } else {
-            news = newsService.getAll();
+            news = newsService.getPage(pageable);
         }
         model.addAttribute("news", news);
+        model.addAttribute("url", "");
         model.addAttribute("filter", filterText);
+
         return "index";
     }
 
