@@ -13,11 +13,13 @@ public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "title")
+    private String title;
     @CreatedDate
     @Column(name = "created")
     private LocalDateTime created;
     @Column(name = "img")
     private String img;
-    @Column(name = "message")
-    private String  message;
+    @Column(name = "text")
+    private String text;
 }

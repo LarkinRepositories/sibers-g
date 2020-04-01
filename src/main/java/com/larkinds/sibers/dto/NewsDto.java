@@ -10,8 +10,11 @@ import java.time.LocalDateTime;
 
 @Data
 public class NewsDto {
-    private final Long id;
-    private final LocalDateTime created;
+    private Long id;
+    private String title;
+    private LocalDateTime created;
     private String img;
-    private final String  message;
+    private String text;
+
+
 }
