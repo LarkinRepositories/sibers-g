@@ -13,6 +13,8 @@ public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "title")
+    private String title;
     @CreatedDate
     @Column(name = "created")
     private LocalDateTime created;
