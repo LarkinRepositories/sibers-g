@@ -40,4 +40,9 @@ public class NewsServiceImpl implements NewsService {
     public List<NewsDto> getAllWithPagination(Integer limit) {
         return mapper.toDtoList(repository.findAll(PageRequest.of(0,limit)).toList());
     }
+
+    @Override
+    public List<NewsDto> filter(String filterText) {
+        return mapper.toDtoList(repository.findAllByTextContainingOrTitleContaining(filterText, filterText));
+    }
 }
