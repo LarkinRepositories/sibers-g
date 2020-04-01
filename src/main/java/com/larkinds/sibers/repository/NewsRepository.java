@@ -18,10 +18,11 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     Page<News> findAll(Pageable pageable);
 
     /**
-     * Returns news containing specific text
+     * Returns page of news containing specific text
      * @param searchText text to search
      * @param  titleText title text to search
-     * @return List of news containing specific text
+     * @param pageable limiter
+     * @return page of news containing specific text
      */
-    List<News> findAllByTextContainingOrTitleContaining(String searchText, String titleText);
+    Page<News> findAllByTextContainingOrTitleContaining(String searchText, String titleText, Pageable pageable);
 }
