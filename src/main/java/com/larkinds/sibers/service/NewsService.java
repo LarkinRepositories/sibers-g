@@ -31,4 +31,12 @@ public interface NewsService {
      * @return a list of news matching param criteria
      */
     List<NewsDto> getAllWithPagination(Integer limit);
+
+    /**
+     * Filters news to display only containing filterText ones
+     * @param filterText a text to filter the news
+     * @return List of filtered news matching param criteria
+     */
+    List<NewsDto> filter(String filterText);
+
 }
