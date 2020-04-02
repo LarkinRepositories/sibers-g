@@ -93,7 +93,7 @@
             <li class="page-item disabled">
                 <a class="page-link" href="#" tabindex="-1">Элементов на странице</a>
             </li>
-            <#list [10, 20, 50] as c>
+            <#list [1, 10, 20, 50] as c>
                 <#if c == page.getSize()>
                     <li class="page-item active">
                         <a class="page-link" href="#" tabindex="-1">${c}</a>

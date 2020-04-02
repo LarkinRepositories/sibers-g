@@ -12,28 +12,43 @@
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Добавить Новость
     </a>
-    <div  class="collapse" id="collapseExample">
+    <div  class="collapse" <#if newsDto??>show</#if> id="collapseExample">
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="Введите заголовок новости" />
+                    <input type="text" name="title" class="form-control ${(titleError??)?string('is-invalid', '')}" value="${title!}"
+                           placeholder="Enter news title" />
+                    <#if titleError??>
+                        <div class="invalid-feedback">
+                            ${titleError}
+                        </div>
+                    </#if>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="text" class="form-control" placeholder="Введите текст новости" />
+                    <input type="text" name="text" class="form-control ${(textError??)?string('is-invalid', '')}" value="${text!}"
+                           placeholder="Enter the news text" />
+                    <#if textError??>
+                        <div class="invalid-feedback">
+                            ${textError}
+                        </div>
+                    </#if>
                 </div>
                 <div class="form-group">
                     <div class="custom-file">
-                        <input type="file" name="file" id="customFile">
-                        <label class="custom-file-label" for="customFile">Выберите картинку</label>
+                        <input type="file" name="file" id="customFile" class="form-control ${(fileError??)?string('is-invalid', '')}">
+                        <label class="custom-file-label" for="customFile">Upload an image</label>
+                        <#if fileError??>
+                            <div class="invalid-feedback">${fileError}</div>
+                        </#if>
                     </div>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Добавить новость</button>
                 </div>
             </form>
-
         </div>
     </div>
+    <#if titleError?? || textError?? || fileError??><div class="alert alert-danger" role="alert">Error: invalid input, please try again</div></#if>
     <h1>Список новостей</h1>
     <@p.pager url news></@p.pager>
     <div class="card-columns">
