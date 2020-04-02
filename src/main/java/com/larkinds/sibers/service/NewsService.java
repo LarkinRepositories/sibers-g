@@ -15,6 +15,20 @@ public interface NewsService {
     NewsDto add(NewsDto newsDto);
 
     /**
+     * Gets a particular news with param id
+     * @param id id of the news
+     * @return News with id matching param criteria
+     */
+    NewsDto get(Long id);
+
+    /**
+     * Checks if news record with title param exists
+     * @param title title of the news
+     * @return exists ? true : false
+     */
+    boolean exitsByTitle(String title);
+
+    /**
      * Returns all news stored in the database
      * @return List of news stored in the database
      */

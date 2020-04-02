@@ -29,6 +29,16 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public NewsDto get(Long id) {
+        return mapper.toDto(repository.getOne(id));
+    }
+
+    @Override
+    public boolean exitsByTitle(String title) {
+        return repository.existsByTitle(title);
+    }
+
+    @Override
     public List<NewsDto> getAll() {
         return mapper.toDtoList(repository.findAll());
     }
