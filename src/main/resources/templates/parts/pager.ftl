@@ -40,7 +40,7 @@
             <li class="page-item disabled">
                 <a class="page-link" href="#" tabindex="-1">Display</a>
             </li>
-            <#list [1, 10, 20, 50] as c>
+            <#list [10, 20, 50] as c>
                 <#if c == page.getSize()>
                     <li class="page-item active">
                         <a class="page-link" href="#" tabindex="-1">${c}</a>
