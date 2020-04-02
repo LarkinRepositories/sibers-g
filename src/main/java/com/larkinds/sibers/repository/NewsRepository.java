@@ -25,4 +25,11 @@ public interface NewsRepository extends JpaRepository<News, Long> {
      * @return page of news containing specific text
      */
     Page<News> findAllByTextContainingOrTitleContaining(String searchText, String titleText, Pageable pageable);
+
+    /**
+     * Checks if news record with a specific title exists in database
+     * @param title title of the news
+     * @return exists ? true : false
+     */
+    boolean existsByTitle(String title);
 }
