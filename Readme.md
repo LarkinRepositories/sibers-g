@@ -1,7 +1,7 @@
 # Sibers test for applicants: Java Developer tasks application
-##Build
+## Build
 gradle build
-##Usage Manual
+## Usage Manual
 ### Configuring database
 Before starting the application, you need to deploy the database. 
 The project uses PostgreSQL as a database. 
