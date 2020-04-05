@@ -14,7 +14,7 @@ Files in ./db/upload-images folder should be put into your file upload path fold
 ### Configuring file upload path
 Before launching its important to configure file upload path.
 Change upload.path property value in src/main/resources/application.properties to whatever path you are able to write down data on your filesystem.
-##Launching
+## Launching
 To launch the application run src/main/java/SibersApplication.java
 By default, the application will start at localhost:9000. 
 At the application start liquibase will create the necessary tables.
